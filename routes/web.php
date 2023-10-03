@@ -24,3 +24,7 @@ Route::get("form",function(){
     return view("form");
 });
 Route::post("form",[UserController::class,"insertData"]);
+Route::get('view',[UserController::class,"viewData"]);
+Route::get("edit/{id}",[UserController::class,"editData"]);
+Route::post("edit",[UserController::class,"updateData"]);
+Route::get("delete/{id}",[UserController::class,"deleteData"]);

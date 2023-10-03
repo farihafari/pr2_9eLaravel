@@ -18,4 +18,24 @@ $obj->email = $req->userEmail;
 $obj->save();
 echo "<script>alert('data inserted into table')</script>";
     }
+    function viewData(){
+        $data = employee::all();
+        return view("view",compact("data"));
+    }
+    function editData($id){
+$data = employee::find($id);
+return view("edit",compact("data"));
+    }
+    function updateData(Request $req){
+        $updateData = employee::find($req->userId);
+        $updateData->name = $req->userName;
+        $updateData->email = $req->userEmail;
+        $updateData->save();
+        return redirect("view");
+    }
+    function deleteData($id){
+$data = employee::find($id);
+$data ->delete();
+return redirect("view");
+    }
 }
